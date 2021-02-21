@@ -1,0 +1,23 @@
+.Navigation {
+  background-color: #161b22;
+  padding: 1rem 0;
+
+  display: flex;
+  justify-content: center;
+}
+
+.Links,
+.Links:active,
+.Links:visited {
+  text-decoration: none;
+  color: white;
+  transition: all 0.2s ease-in;
+}
+
+.Links:hover {
+  color: #f0883e;
+}
+
+.Spacer {
+  min-width: 3rem;
+}
