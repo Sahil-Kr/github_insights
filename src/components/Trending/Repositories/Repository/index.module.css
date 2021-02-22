@@ -1,0 +1,83 @@
+.Tile {
+  padding: 1rem 1rem;
+}
+
+.Tile:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.Image {
+  border-radius: 2rem;
+  height: 3rem;
+  width: 3rem;
+}
+
+.Header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.SubHeader {
+  margin-left: 10px;
+  font-size: 1.1rem;
+  font-weight: 400;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.SubHeader b {
+  font-weight: 600;
+}
+
+.SubHeader > :not(:last-child):hover {
+  color: #4da0ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.Desc {
+  font-weight: 200;
+  font-size: 0.85rem;
+}
+
+.Misc {
+  margin-top: 10px;
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 200;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Lang {
+  height: 0.9rem;
+  width: 0.9rem;
+  border-radius: 1rem;
+}
+
+.Star {
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.Fork {
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.UserImage {
+  margin-left: 4px;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.Expand {
+  flex: 1;
+}

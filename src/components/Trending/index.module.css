@@ -1,0 +1,62 @@
+.SubHeading {
+  margin-top: 2rem;
+  font-weight: 200;
+}
+
+.Container {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: 70rem;
+}
+
+/* @media (max-width: 920px) {
+  .Container {
+    margin: 2rem 2rem;
+  }
+} */
+
+.ToggleButtons {
+  display: flex;
+  justify-content: flex-start;
+  padding: 1rem;
+  background-color: #161b22;
+}
+
+button {
+  padding: 6px 10px;
+  font-family: inherit;
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.RepoButton {
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.DevButton {
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* .RepoButton:focus {
+  outline: none;
+  border: 1px solid transparent;
+  background-color: #0366d6;
+}
+
+.DevButton:focus {
+  outline: none;
+  border: 1px solid transparent;
+  background-color: #0366d6;
+} */
+
+button:focus {
+  outline: none;
+}

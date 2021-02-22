@@ -1,0 +1,22 @@
+.LineChart {
+  flex: 0.6;
+
+  position: relative;
+  height: 11rem;
+}
+
+.LineChart::after {
+  content: "Commits per week";
+  font-size: 12px;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.7);
+  float: right;
+  margin-right: 2rem;
+}
+
+.Loader {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}

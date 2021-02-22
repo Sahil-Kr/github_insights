@@ -1,0 +1,29 @@
+.UserImageInfo {
+  flex: 0.4;
+  display: flex;
+}
+
+.UserImage {
+  height: 11rem;
+  width: 11rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.UserInfo {
+  display: flex;
+  flex-flow: column;
+  text-align: start;
+  margin: 0 1rem;
+  font-weight: 300;
+  font-size: 0.9rem;
+  justify-content: space-around;
+}
+
+a,
+a:visited,
+a:active {
+  color: #0366d6;
+  text-decoration: none;
+}

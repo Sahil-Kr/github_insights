@@ -1,35 +1,51 @@
-import React, { useEffect, useState } from "react";
+import classes from "./index.module.css";
+import React, { useEffect, useRef, useState } from "react";
+import Developers from "./Developers";
+import Repositories from "./Repositories";
 
 const Trending = () => {
-  const [trendingData, setTrendingData] = useState([]);
   const [isRepo, setIsRepo] = useState(true);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const header = {
-      method: "GET",
-      headers: new Headers({
-        "x-rapidapi-key": "00765a266cmsh06a30372c102f5bp1b6638jsn52a6baf9d86b",
-        "x-rapidapi-host": "github-trending.p.rapidapi.com",
-        useQueryString: "true",
-      }),
-    };
-
-    const res = await fetch(
-      "https://github-trending.p.rapidapi.com/repositories?since=daily&spoken_language_code=en",
-      header
-    );
-
-    const data = await res.json();
-    console.log(data);
-
-    setTrendingData(data);
+  const repoClickHandler = () => {
+    setIsRepo(true);
   };
 
-  return <div></div>;
+  const devClickHandler = () => {
+    setIsRepo(false);
+  };
+
+  const focusStyle = {
+    outline: "none",
+    border: "1px solid transparent",
+    backgroundColor: "#0366d6",
+  };
+
+  return (
+    <>
+      <p className={classes.SubHeading}>
+        See what the GitHub community is most excited about today.
+      </p>
+      <div className={classes.Container}>
+        <div className={classes.ToggleButtons}>
+          <button
+            className={classes.RepoButton}
+            onClick={repoClickHandler}
+            style={isRepo ? focusStyle : {}}
+          >
+            Repositories
+          </button>
+          <button
+            className={classes.DevButton}
+            onClick={devClickHandler}
+            style={!isRepo ? focusStyle : {}}
+          >
+            Developers
+          </button>
+        </div>
+        {isRepo ? <Repositories /> : <Developers />}{" "}
+      </div>
+    </>
+  );
 };
 
 export default Trending;

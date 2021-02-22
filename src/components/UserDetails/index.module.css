@@ -1,0 +1,39 @@
+.Container {
+  max-width: 72rem;
+  min-width: 62rem;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+
+.UserMain {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.DoughnutBody {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.Doughnuts {
+  flex: 1;
+  text-align: left;
+  font-size: 1.1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease-in;
+}
+
+.Divider {
+  width: 100%;
+  height: 0.5px;
+  margin: 3rem 0;
+  background-color: rgba(255, 255, 255, 0.3);
+}

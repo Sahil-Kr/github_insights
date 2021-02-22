@@ -1,0 +1,87 @@
+.Tile {
+  display: flex;
+  justify-content: center;
+
+  padding: 1rem 1rem;
+}
+
+.Tile:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.Image {
+  margin-left: 1rem;
+  border-radius: 2rem;
+  height: 3rem;
+  width: 3rem;
+}
+
+.NameTile {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.NameSubTile {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.NameSubTile b {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.NameSubTile b:hover {
+  color: #0366d6;
+  cursor: pointer;
+}
+
+.RepoTile {
+  flex: 1.2;
+  display: flex;
+  font-size: 0.9rem;
+  font-weight: 200;
+  text-align: left;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.RepoTile b {
+  display: inline-block;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.RepoTile b:hover {
+  font-weight: 500;
+  color: #0366d6;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.FollowTile {
+  flex: 0.8;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.FollowTile button {
+  padding: 4px 8px;
+  font-family: inherit;
+  border-radius: 8px;
+  border: 1px solid#0366d6;
+  transition: all 0.1s ease-in;
+}
+
+.FollowTile button:hover {
+  transform: scale(1.05);
+  background-color: #0366d6;
+}
