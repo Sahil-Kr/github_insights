@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./index.module.css";
 import flame from "../../../../Assets/Icons/flame.svg";
 import repo_icon from "../../../../Assets/Icons/repo_icon.svg";
+import { UrlLauncher } from "../../../Utilities";
 
 const Developer = ({ dev, index }) => {
   return (
@@ -10,9 +11,10 @@ const Developer = ({ dev, index }) => {
         <span>{index}</span>
         <img className={classes.Image} src={dev.avatar} alt="avatar image" />
         <div className={classes.NameSubTile}>
-          <span>
+          <UrlLauncher url={dev.url}>
             <b>{dev.name}</b>
-          </span>
+          </UrlLauncher>
+
           <span>{dev.username}</span>
         </div>
       </div>
@@ -24,14 +26,16 @@ const Developer = ({ dev, index }) => {
         <div>
           <img src={repo_icon} alt="repo_icon" />
           &nbsp;
-          <span>
+          <UrlLauncher url={dev?.repo?.url}>
             <b>{dev.repo?.name}</b>
-          </span>
+          </UrlLauncher>
         </div>
         <span>{dev.repo?.description}</span>
       </div>
       <div className={classes.FollowTile}>
-        <button>Follow</button>
+        <button>
+          <UrlLauncher url={dev.url}>Follow</UrlLauncher>
+        </button>
       </div>
     </div>
   );

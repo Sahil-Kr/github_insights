@@ -1,0 +1,25 @@
+.HoverDialog {
+  clip-path: polygon(
+    40% 20%,
+    50% 0,
+    60% 20%,
+    100% 20%,
+    100% 100%,
+    0 100%,
+    0 20%
+  );
+  background-color: #eee;
+  position: absolute;
+  height: 50px;
+  width: 120px;
+  transform: translateX(-44px);
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8px;
+
+  font-size: 0.8rem;
+  color: black;
+  font-weight: 400;
+}

@@ -9,6 +9,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
 }
 
 .UserInfo {
@@ -21,9 +22,10 @@
   justify-content: space-around;
 }
 
-a,
-a:visited,
-a:active {
+.Link span {
   color: #0366d6;
-  text-decoration: none;
+}
+
+.Link span:hover {
+  text-decoration: underline;
 }

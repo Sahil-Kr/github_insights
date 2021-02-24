@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Loader from "../../Loader";
+import { UrlLauncher } from "../../Utilities";
 import classes from "./index.module.css";
 
 const UserInfo = ({ username }) => {
@@ -27,10 +28,12 @@ const UserInfo = ({ username }) => {
       //   console.log(data);
       setUserData(data);
     } catch (e) {
-      e.then((res) => {
-        console.log("error", res.message);
-        setError(res.message);
-      });
+      // e.then((res) => {
+      //   console.log("error", res.message);
+      //   setError(res.message);
+      // });
+      console.log("error", e);
+      setError(e + "");
     }
     setLoading(false);
   };
@@ -47,13 +50,10 @@ const UserInfo = ({ username }) => {
             <p>{userData.public_repos} public repo</p>
             <p>{userData.created_at}</p>
             <p>{userData.company}</p>
-            <a
-              href={userData.html_url}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              View profile on Github
-            </a>
+            <UrlLauncher url={userData.html_url} className={classes.Link}>
+              <span>View profile on Github</span>
+            </UrlLauncher>
+
             {/* <p>{userData.bio}</p> */}
           </div>
         </div>

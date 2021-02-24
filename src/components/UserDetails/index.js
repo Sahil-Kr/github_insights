@@ -11,6 +11,7 @@ const UserDetails = ({ username }) => {
   const [starsData, setStarsData] = useState({});
   const [languageData, setLanguageData] = useState({});
   const [repoData, setRepoData] = useState([]);
+  const [repoCommitData, setRepoCommitData] = useState([]);
 
   useEffect(() => {
     calculateCommits();
@@ -36,24 +37,23 @@ const UserDetails = ({ username }) => {
 
     const stars = {};
     const watchers = {};
+    const languages = {};
     data.forEach((repo) => {
       stars[repo.name] = repo.stargazers_count;
       watchers[repo.name] = repo.watchers_count;
+      if (repo.language && `${repo.language}` in languages) {
+        languages[`${repo.language}`] = languages[`${repo.language}`] + 1;
+      } else if (repo.language) {
+        languages[`${repo.language}`] = 1;
+      }
       repos.push(repo.name);
     });
 
-    // setStarsData(stars);
-    // setDoughnutData(stars);
-    // console.log(stars);
     setStarsData(graphDataSetter(stars));
-    // setWatchersData(graphDataSetter(watchers));
-    fetchLanguageData(repos);
+    setLanguageData(graphDataSetter(languages));
 
-    // console.log(stars);
-
-    // console.log("Repos", repos);
-    // const weeklyCommits = [];
     const weeklyCommitsobj = {};
+    const repoCommits = [];
 
     for (let i = 0; i < repos.length; i++) {
       const resp = await fetch(
@@ -62,6 +62,8 @@ const UserDetails = ({ username }) => {
         // console.log(res);
         return res.json();
       });
+
+      repoCommits.push(resp);
 
       for (let j = 0; j < 52; j++) {
         if (!resp[j]) continue;
@@ -72,17 +74,14 @@ const UserDetails = ({ username }) => {
           weeklyCommitsobj[`${resp[j]?.week}`] = resp[j]?.total;
         }
       }
-
-      // weeklyCommits.push(resp);
     }
+
+    setRepoCommitData(repoCommits);
+    // console.log("Repo commits", repoCommits);
+    // console.log(repos);
 
     setLineChartData(weeklyCommitsobj);
     console.log("fetch complete");
-
-    // console.log(weeklyCommits, weeklyCommitsobj);
-    // setCommitArr(weeklyCommits);
-    // setCommitObj(weeklyCommitsobj);
-    // setLoading(false);
   };
 
   const setLineChartData = (weeklyCommitsobj) => {
@@ -108,36 +107,36 @@ const UserDetails = ({ username }) => {
     setGraphData(graph);
   };
 
-  const fetchLanguageData = async (repos) => {
-    console.log("fetching lang data");
-    if (repos.label > 50) return;
+  // const fetchLanguageData = async (repos) => {
+  //   console.log("fetching lang data");
+  //   if (repos.label > 50) return;
 
-    const languages = {};
+  //   const languages = {};
 
-    for (let repo of repos) {
-      const res = await fetch(
-        `https://api.github.com/repos/${username}/${repo}/languages`
-      ).then((resp) => {
-        // console.log(res);
-        return resp.json();
-      });
+  //   for (let repo of repos) {
+  //     const res = await fetch(
+  //       `https://api.github.com/repos/${username}/${repo}/languages`
+  //     ).then((resp) => {
+  //       // console.log(res);
+  //       return resp.json();
+  //     });
 
-      for (let lang in res) {
-        // languages[`${lang}`] = languages[`${lang}`] ?? 0 + 1;
-        if (`${lang}` in languages) {
-          languages[`${lang}`] = languages[`${lang}`] + 1;
-        } else {
-          languages[`${lang}`] = 1;
-        }
-      }
-    }
+  //     for (let lang in res) {
+  //       // languages[`${lang}`] = languages[`${lang}`] ?? 0 + 1;
+  //       if (`${lang}` in languages) {
+  //         languages[`${lang}`] = languages[`${lang}`] + 1;
+  //       } else {
+  //         languages[`${lang}`] = 1;
+  //       }
+  //     }
+  //   }
 
-    // console.log("languages", languages);
-    setLanguageData(graphDataSetter(languages));
-    console.log("fetching lang data complete");
+  //   // console.log("languages", languages);
+  //   setLanguageData(graphDataSetter(languages));
+  //   console.log("fetching lang data complete");
 
-    return languages;
-  };
+  //   return languages;
+  // };
 
   // const setDoughnutData = (starsData) => {
   //   setStarsData(graphDataSetter(starsData));
@@ -202,13 +201,6 @@ const UserDetails = ({ username }) => {
 
   return (
     <div className={classes.Container}>
-      {/* <button
-        onClick={() => {
-          calculateCommits();
-        }}
-      >
-        Create graph
-      </button> */}
       <div className={classes.UserMain}>
         <UserInfo username={username} />
         <LineChart graphData={graphData} />
@@ -247,7 +239,7 @@ const UserDetails = ({ username }) => {
         </div>
       </div>
       <div className={classes.Divider} />
-      <UserRepos userRepos={repoData} />
+      <UserRepos userRepos={repoData} commitData={repoCommitData} />
     </div>
   );
 };

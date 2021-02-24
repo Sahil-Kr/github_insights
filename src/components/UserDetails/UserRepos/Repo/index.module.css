@@ -16,6 +16,12 @@
   align-items: baseline;
 }
 
+.NameCont {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+}
+
 .Name {
   font-weight: 400;
   font-size: 0.9rem;
@@ -25,4 +31,47 @@
 
 .Expand {
   flex: 1;
+}
+
+.Misc {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 4px;
+}
+
+.Misc span {
+  font-size: 0.9rem;
+  font-weight: 200;
+}
+
+.Star {
+  margin-left: 0.5rem;
+  /* cursor: pointer; */
+}
+
+.Fork {
+  margin-left: 1rem;
+  /* cursor: pointer; */
+}
+.Send {
+  transition: scale 0.2s ease-in;
+}
+
+.Send:hover {
+  transform: scale(1.1);
+}
+
+.Tools {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.Maximize {
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.Maximize:hover {
+  transform: scale(1.1);
 }

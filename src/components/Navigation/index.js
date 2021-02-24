@@ -1,5 +1,5 @@
 import classes from "./index.module.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navigation = () => {
@@ -11,6 +11,9 @@ const Navigation = () => {
   //   textDecorationColor: "#f0883e",
   //   textUnderlineOffset: "2px",
   // };
+  // useEffect(() => {
+  //   console.dir(History);
+  // }, []);
 
   return (
     <div className={classes.Navigation}>
@@ -25,7 +28,7 @@ const Navigation = () => {
       <div className={classes.Spacer}></div>
       <Link
         className={classes.Links}
-        to="/Trending"
+        to="/trending"
         // style={!currentSearch ? currentLinkStyle : {}}
         // onClick={() => setCurrentSearch(false)}
       >

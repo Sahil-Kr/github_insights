@@ -11,7 +11,7 @@ const Layout = () => {
         <Navigation />
         <Switch>
           <Route path="/" exact component={Search} />
-          <Route path="/Trending" component={Trending} />
+          <Route path="/trending" component={Trending} />
         </Switch>
       </Router>
     </>
