@@ -19,7 +19,7 @@ const Navigation = () => {
     <div className={classes.Navigation}>
       <Link
         className={classes.Links}
-        to="/"
+        to="/search"
         // style={currentSearch ? currentLinkStyle : {}}
         // onClick={() => setCurrentSearch(true)}
       >
