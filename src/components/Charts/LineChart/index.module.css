@@ -6,7 +6,7 @@
 }
 
 .LineChart::after {
-  content: "Commits per week";
+  content: "Commits per month";
   font-size: 12px;
   font-weight: 200;
   color: rgba(255, 255, 255, 0.7);

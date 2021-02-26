@@ -1,5 +1,6 @@
 import React from "react";
 import Navigation from "../components/Navigation";
+import UserDetails from "../components/UserDetails";
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,6 +17,7 @@ const Layout = () => {
         <Navigation />
         <Switch>
           <Route path="/search" exact component={Search} />
+          <Route path="/search/:username" exact component={UserDetails} />
           <Route path="/trending" component={Trending} />
           <Redirect exact from="/" to="trending" />
         </Switch>

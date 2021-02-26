@@ -6,12 +6,13 @@ import UserInfo from "./UserInfo";
 import DoughnutChart from "../Charts/DoughnutChart";
 import UserRepos from "./UserRepos";
 
-const UserDetails = ({ username }) => {
+const UserDetails = ({ match }) => {
   const [graphData, setGraphData] = useState({});
   const [starsData, setStarsData] = useState({});
   const [languageData, setLanguageData] = useState({});
   const [repoData, setRepoData] = useState([]);
   const [repoCommitData, setRepoCommitData] = useState([]);
+  const username = match.params.username;
 
   useEffect(() => {
     calculateCommits();
@@ -66,13 +67,12 @@ const UserDetails = ({ username }) => {
       repoCommits.push(resp);
 
       for (let j = 0; j < 52; j++) {
-        if (!resp[j]) continue;
-        if (`${resp[j]?.week}` in weeklyCommitsobj) {
-          weeklyCommitsobj[`${resp[j].week}`] =
-            weeklyCommitsobj[`${resp[j].week}`] + resp[j].total;
-        } else {
-          weeklyCommitsobj[`${resp[j]?.week}`] = resp[j]?.total;
-        }
+        const month = ("" + new Date(+resp[j]?.week * 1000)).split(" ");
+
+        if (`${month[1] + " " + month[3]}` in weeklyCommitsobj) {
+          weeklyCommitsobj[`${month[1] + " " + month[3]}`] =
+            weeklyCommitsobj[`${month[1] + " " + month[3]}`] + resp[j].total;
+        } else weeklyCommitsobj[`${month[1] + " " + month[3]}`] = resp[j].total;
       }
     }
 
@@ -86,11 +86,7 @@ const UserDetails = ({ username }) => {
 
   const setLineChartData = (weeklyCommitsobj) => {
     const graph = {
-      labels: [
-        ...Object.keys(weeklyCommitsobj).map((date) =>
-          ("" + new Date(+date * 1000)).split(" ").splice(1, 3).join(" ")
-        ),
-      ],
+      labels: [...Object.keys(weeklyCommitsobj).map((date) => date)],
       datasets: [
         {
           label: "Commits",

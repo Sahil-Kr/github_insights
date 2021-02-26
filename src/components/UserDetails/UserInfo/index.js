@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Loader from "../../Loader";
-import { UrlLauncher } from "../../Utilities";
+import { UrlLauncher, getDuration } from "../../Utilities";
 import classes from "./index.module.css";
 
 const UserInfo = ({ username }) => {
@@ -48,7 +48,7 @@ const UserInfo = ({ username }) => {
               {userData.login}({userData.name})
             </p>
             <p>{userData.public_repos} public repo</p>
-            <p>{userData.created_at}</p>
+            <p>Joined Github {getDuration(userData.created_at)} ago</p>
             <p>{userData.company}</p>
             <UrlLauncher url={userData.html_url} className={classes.Link}>
               <span>View profile on Github</span>

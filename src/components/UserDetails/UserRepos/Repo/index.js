@@ -8,7 +8,7 @@ import fork from "../../../../Assets/Icons/fork.svg";
 import RepoDetails from "./RepoDetails";
 import { UrlLauncher } from "../../../Utilities";
 
-const Repo = ({ repo }) => {
+const Repo = ({ repo, commitData }) => {
   const [clicked, setClicked] = useState(false);
 
   const toggleRepoClickHandler = () => {
@@ -45,17 +45,23 @@ const Repo = ({ repo }) => {
               <img className={classes.Send} src={expand} alt="send icon" />
             </UrlLauncher>
 
-            <img
-              className={classes.Maximize}
-              src={maximize}
-              alt="send icon"
-              onClick={toggleRepoClickHandler}
-            />
+            {commitData && commitData.length != 0 ? (
+              <img
+                className={classes.Maximize}
+                src={maximize}
+                alt="maximize icon"
+                onClick={toggleRepoClickHandler}
+              />
+            ) : null}
           </div>
         </div>
       </div>
       {clicked ? (
-        <RepoDetails clickHandler={toggleRepoClickHandler} repo={repo} />
+        <RepoDetails
+          clickHandler={toggleRepoClickHandler}
+          repo={repo}
+          commitData={commitData}
+        />
       ) : (
         ""
       )}

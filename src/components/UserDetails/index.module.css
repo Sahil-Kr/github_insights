@@ -4,8 +4,8 @@
   padding: 2rem;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  margin: 0 auto;
-  margin-bottom: 3rem;
+  margin: 3rem auto;
+  /* margin-bottom: 3rem; */
 }
 
 .UserMain {

@@ -1,5 +1,5 @@
 import classes from "./index.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Navigation = () => {
